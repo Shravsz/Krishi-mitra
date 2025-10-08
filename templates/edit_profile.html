@@ -1,0 +1,195 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Profile | Krishi Mitra</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f7;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 250px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #2e86de;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background-color: #1b4f72;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Edit Your Profile</h2>
+
+    <form method="POST">
+      <label for="name">New Name:</label>
+      <input type="text" id="name" name="name" value="{{ user.name }}" required>
+
+      <label for="password">New Password:</label>
+      <input type="password" id="password" name="password" placeholder="Leave blank to keep current">
+
+      <button type="submit">Update Profile</button>
+    </form>
+
+    <br>
+    <a href="/profile"><button>Cancel</button></a>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Profile | Krishi Mitra</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script>
+    function validateEditForm() {
+      const name = document.forms["editForm"]["name"].value.trim();
+      const password = document.forms["editForm"]["password"].value;
+
+      if (!name && !password) {
+        alert("Please update at least one field.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Edit Profile</h2>
+    <form name="editForm" method="POST" onsubmit="return validateEditForm();">
+      <input type="text" name="name" placeholder="New Name" value="{{ user.name }}"><br>
+      <input type="password" name="password" placeholder="New Password"><br>
+      <button type="submit">Save Changes</button>
+    </form>
+    <br>
+    <a href="/profile"><button>Cancel</button></a>
+  </div>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Profile | Krishi Mitra</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      background-color: #0d1117;
+      font-family: Arial, sans-serif;
+      color: #c9d1d9;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .login-container {
+      background: #161b22;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="file"] {
+      padding: 10px;
+      width: 90%;
+      margin: 10px 0;
+      border: 1px solid #30363d;
+      border-radius: 5px;
+      background: #0d1117;
+      color: #c9d1d9;
+    }
+
+    button {
+      background-color: #238636;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .profile-pic-preview img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #2e86de;
+      margin-bottom: 10px;
+    }
+  </style>
+  <script>
+    function validateEditForm() {
+      const name = document.forms["editForm"]["name"].value.trim();
+      const password = document.forms["editForm"]["password"].value;
+
+      if (!name && !password) {
+        alert("Please update at least one field.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Edit Profile</h2>
+    <form name="editForm" method="POST" enctype="multipart/form-data" onsubmit="return validateEditForm();">
+      <input type="text" name="name" placeholder="New Name" value="{{ user.name }}"><br>
+      <input type="password" name="password" placeholder="New Password"><br>
+
+      <div class="profile-pic-preview">
+        {% if user.profile_image %}
+          <img src="{{ user.profile_image }}" alt="Current Profile Photo">
+        {% else %}
+          <img src="{{ url_for('static', filename='images/default-profile.png') }}" alt="Default Profile Photo">
+        {% endif %}
+      </div>
+
+      <input type="file" name="profile_photo" accept="image/*"><br>
+      <button type="submit">Save Changes</button>
+    </form>
+    <br>
+    <a href="/profile"><button>Cancel</button></a>
+  </div>
+</body>
+</html>

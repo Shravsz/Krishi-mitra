@@ -1,0 +1,18 @@
+[
+    {
+        "name": "nidhi",
+        "email": "nidhinishmitha@gmail.com",
+        "password": "1",
+        "profile_image": "/static/profile_photos/nidhinishmitha_gmail_com.jpg"
+    },
+    {
+        "name": "niteeshb2000@gmail.com ",
+        "email": "niteesh",
+        "password": "1"
+    },
+    {
+        "name": "shravya",
+        "email": "shravyaracharla26@gmail.com",
+        "password": "1234"
+    }
+]

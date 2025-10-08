@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recommended Crop</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      background-color: #f1fdf4;
+    }
+    .result-box {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+    }
+    h2 {
+      color: #2e7d32;
+    }
+    a {
+      text-decoration: none;
+      color: #1e88e5;
+      display: inline-block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="result-box">
+    <h2>✅ Recommended Crop</h2>
+    <p>The best crop to grow in your area is:</p>
+    <h3>🌾 {{ crop }}</h3>
+
+    <a href="/crop">🔁 Recommend another</a>
+  </div>
+
+</body>
+</html>

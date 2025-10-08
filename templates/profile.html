@@ -1,0 +1,77 @@
+<!-- templates/profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile | Krishi Mitra</title>
+  <style>
+    body {
+      background-color: #0d1117;
+      font-family: Arial, sans-serif;
+      color: #c9d1d9;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .profile-container {
+      background: #161b22;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    .profile-pic img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #2e86de;
+    }
+
+    h2 {
+      color: #58a6ff;
+    }
+
+    .profile-buttons a button,
+    .profile-buttons form button {
+      background-color: #238636;
+      color: white;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .profile-buttons .danger {
+      background-color: #da3633;
+    }
+
+    .profile-buttons button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-pic">
+      <img src="{{ user.profile_image if user.profile_image else url_for('static', filename='images/default-profile.png') }}" alt="Profile Photo">
+    </div>
+
+    <h2>{{ user.name }}</h2>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <div class="profile-buttons">
+      <a href="/edit-profile"><button>Edit Profile</button></a>
+      <a href="/dashboard"><button>Back to Dashboard</button></a>
+      <a href="/logout"><button class="danger">Logout</button></a>
+      <form action="/delete-account" method="POST" onsubmit="return confirm('Are you sure you want to delete your account?');">
+        <button type="submit" class="danger">Delete Account</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!-- templates/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Krishi Mitra</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login to Krishi Mitra</h2>
+
+    <!-- Display error message if exists -->
+    {% if error %}
+      <p style="color: red; font-weight: bold;">{{ error }}</p>
+    {% endif %}
+
+    <form action="/login" method="POST">
+      <label for="email">Email or Mobile:</label>
+      <input type="text" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+    
+    <p>Don't have an account? <a href="/signup">Sign up</a></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+[
+  {
+    "scheme": "Krishi Bhagya",
+    "state": "Karnataka",
+    "type": "Irrigation Subsidy",
+    "eligible_for": ["All", "Small Farmers"],
+    "description": "Rainwater harvesting & micro‑irrigation subsidy for dryland farmers.",
+    "link": "https://raitamitra.karnataka.gov.in/"
+  },
+  {
+    "scheme": "Raitha Siri",
+    "state": "Karnataka",
+    "type": "Support for Millets",
+    "eligible_for": ["All", "Small Farmers"],
+    "description": "₹10,000 per hectare for millet cultivation in rain‑fed areas.",
+    "link": "https://raitamitra.karnataka.gov.in/"
+  },
+  {
+    "scheme": "Pradhan Mantri Fasal Bima Yojana",
+    "state": "Karnataka",
+    "type": "Crop Insurance",
+    "eligible_for": ["All", "SC/ST", "Small Farmers"],
+    "description": "Crop‑loss insurance for natural calamities– premium varies by crop; SC/ST & small farmers get subsidised rates.",
+    "link": "https://pmfby.gov.in/"
+  },
+  {
+    "scheme": "Pradhan Mantri Krishi Sinchai Yojana",
+    "state": "Karnataka",
+    "type": "Irrigation Programme",
+    "eligible_for": ["All", "Small Farmers"],
+    "description": "“Per Drop More Crop” micro‑irrigation & watershed subsidy.",
+    "link": "https://pmksy.gov.in/"
+  },
+  {
+    "scheme": "PM‑KISAN",
+    "state": "Karnataka",
+    "type": "Income Support",
+    "eligible_for": ["All", "Small Farmers"],
+    "description": "₹6,000/year in 3 instalments for small & marginal farmers.",
+    "link": "https://pmkisan.gov.in/"
+  },
+  {
+    "scheme": "Gramin Bhandaran Yojana",
+    "state": "Karnataka",
+    "type": "Storage Subsidy",
+    "eligible_for": ["All", "Small Farmers"],
+    "description": "Subsidy for rural warehouses (100–30,000 t capacity).",
+    "link": "https://en.wikipedia.org/wiki/Gramin_Bhandaran_Yojana"
+  },
+  {
+    "scheme": "eNAM (e‑Market)",
+    "state": "Karnataka",
+    "type": "Market Access",
+    "eligible_for": ["All"],
+    "description": "Online mandi integration for better price discovery.",
+    "link": "https://en.wikipedia.org/wiki/Rashtriya_e-Market_Service"
+  },
+  {
+    "scheme": "Solar Pump Subsidy (Horti Dept)",
+    "state": "Karnataka",
+    "type": "Irrigation Subsidy",
+    "eligible_for": ["All", "Small Farmers", "SC/ST"],
+    "description": "50% subsidy on solar irrigation pumps; 90% subsidy for SC/ST on beekeeping bees.",
+    "link": "#"
+  },
+  {
+    "scheme": "Pashu Bhagya",
+    "state": "Karnataka",
+    "type": "Livestock Subsidy",
+    "eligible_for": ["All", "SC/ST", "Small Farmers"],
+    "description": "Subsidy (up to 50%) for cattle, sheep, poultry units; higher subsidy for SC/ST & small farmers.",
+    "link": "#"
+  },
+  {
+    "scheme": "Stand‑Up India",
+    "state": "Karnataka",
+    "type": "Entrepreneur Loan",
+    "eligible_for": ["Women", "SC/ST"],
+    "description": "Loans ₹10 L – ₹1 Cr for women and SC/ST entrepreneurs.",
+    "link": "https://www.standupmitra.in/"
+  },
+  {
+    "scheme": "Udyogini",
+    "state": "Karnataka",
+    "type": "Women Enterprise Subsidy",
+    "eligible_for": ["Women", "SC/ST"],
+    "description": "Self‑employment loan & 50% subsidy (₹1–3 L) for women entrepreneurs.",
+    "link": "#"
+  },
+  {
+    "scheme": "ACABC (Agri‑Clinics/Business)",
+    "state": "Karnataka",
+    "type": "Agri Training & Loan Subsidy",
+    "eligible_for": ["All", "Women", "SC/ST"],
+    "description": "44% subsidy on Agri‑Clinic loans for women & SC/ST; 36% for others.",
+    "link": "#"
+  },
+  {
+    "scheme": "Karnataka Youth Farmers Forum (KYFF)",
+    "state": "Karnataka",
+    "type": "Training & Mentorship",
+    "eligible_for": ["Youth"],
+    "description": "Supports rural youth with agri‑training, startup mentoring, smart irrigation & drone farming programs.",
+    "link": "https://karnatakayouthfarmersforum.org/"
+  },
+  {
+    "scheme": "Skill Development – Ornamental Fish Farming",
+    "state": "Karnataka",
+    "type": "Skill Training",
+    "eligible_for": ["Youth"],
+    "description": "Free 6‑day training in aquarium maintenance and ornamental fish production for youth & aspiring entrepreneurs in Mangaluru.",
+    "link": "#"
+  },
+  {
+    "scheme": "PM‑KUSUM Scheme",
+    "state": "Karnataka",
+    "type": "Clean Energy Irrigation",
+    "eligible_for": ["Youth", "All"],
+    "description": "Subsidy (60%) for solar pump installation, reduces diesel use & offers green‑energy income opportunity.",
+    "link": "https://en.wikipedia.org/wiki/PM_Kusum_Scheme"
+  },
+  {
+    "scheme": "SBI Youth for India Fellowship",
+    "state": "Karnataka",
+    "type": "Rural Fellowship",
+    "eligible_for": ["Youth"],
+    "description": "Rural fellowship programme supporting youth to work on agri‑livelihood and community projects in Karnataka & other states.",
+    "link": "https://youthforindia.org/"
+  }
+]
+  
+

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🌱 Fertilizer Recommendation</title>
+  <style>
+    :root {
+      --bg-color: #f9fcfb;
+      --text-color: #111;
+      --box-bg: #ffffff;
+      --result-bg: #e8f5e9;
+      --result-text: #2e7d32;
+    }
+
+    body.dark {
+      --bg-color: #0d1117;
+      --text-color: #e6edf3;
+      --box-bg: #161b22;
+      --result-bg: #1f6feb;
+      --result-text: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 40px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      color: #27ae60;
+    }
+
+    a {
+      color: #8ab4f8;
+      text-decoration: none;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .theme-toggle button {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      background: #2e7d32;
+      color: white;
+      cursor: pointer;
+    }
+
+    form {
+      background: var(--box-bg);
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    select, input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #000;
+    }
+
+    body.dark select, body.dark input {
+      background: #0d1117;
+      color: #fff;
+      border: 1px solid #30363d;
+    }
+
+    button[type="submit"] {
+      background-color: #27ae60;
+      color: white;
+      font-weight: bold;
+      border: none;
+      margin-top: 20px;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: var(--result-bg);
+      color: var(--result-text);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="theme-toggle">
+    <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+  </div>
+
+  <a href="/dashboard">← Back to Dashboard</a>
+  <h1>🌾 Fertilizer Recommendation</h1>
+
+  <form method="POST">
+    <label>Temperature (°C)</label>
+    <input type="number" name="temperature" required>
+
+    <label>Moisture (%)</label>
+    <input type="number" name="moisture" required>
+
+    <label>Soil Type</label>
+    <select name="soil_type">
+      {% for soil in soil_types %}
+      <option value="{{ soil }}">{{ soil }}</option>
+      {% endfor %}
+    </select>
+
+    <label>Crop Type</label>
+    <select name="crop_type">
+      {% for crop in crop_types %}
+      <option value="{{ crop }}">{{ crop }}</option>
+      {% endfor %}
+    </select>
+
+    <label>Nitrogen (N)</label>
+    <input type="number" name="nitrogen" required>
+
+    <label>Phosphorous (P)</label>
+    <input type="number" name="phosphorous" required>
+
+    <label>Potassium (K)</label>
+    <input type="number" name="potassium" required>
+
+    <button type="submit">Get Recommendation</button>
+  </form>
+
+  {% if recommendation %}
+    <div class="result">
+      ✅ Recommended Fertilizer: {{ recommendation }}
+    </div>
+  {% endif %}
+
+  {% if prediction %}
+    <div class="result">
+      ✅ Recommended Fertilizer: {{ prediction }}<br>
+      🌿 Soil Fertility: {{ fertility }}
+    </div>
+  {% endif %}
+
+  <script>
+    // Check for saved theme
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      // Save preference
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    }
+  </script>
+
+</body>
+</html>

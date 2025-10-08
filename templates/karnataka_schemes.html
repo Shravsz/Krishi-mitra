@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KrishiMitra – Karnataka Govt Schemes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+
+    label, select, button {
+      font-size: 16px;
+    }
+
+    select, button {
+      padding: 8px 12px;
+      margin: 5px 10px 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #66bb6a;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #4caf50;
+    }
+
+    .scheme-card {
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .scheme-card h3 {
+      margin-top: 0;
+      color: #2e7d32;
+    }
+
+    .scheme-card p {
+      margin: 6px 0;
+      color: #333;
+    }
+
+    .scheme-card a {
+      display: inline-block;
+      margin-top: 8px;
+      text-decoration: none;
+      color: #1e88e5;
+      font-weight: 500;
+    }
+
+    .scheme-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏛️ KrishiMitra – Karnataka Government Schemes</h1>
+
+  <label for="category">Select Beneficiary Category:</label>
+  <select id="category">
+    <option value="All">All</option>
+    <option value="Small Farmers">Small Farmers</option>
+    <option value="Women">Women</option>
+    <option value="Youth">Youth</option>
+    <option value="SC/ST">SC/ST</option>
+  </select>
+
+  <button onclick="loadSchemes()">Show Karnataka Schemes</button>
+
+  <div id="results"></div>
+
+  <script>
+    function loadSchemes() {
+      const category = document.getElementById("category").value;
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "Loading...";
+
+      fetch(`/api/karnataka-schemes?category=${category}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) throw new Error(data.error);
+
+          resultsDiv.innerHTML = ""; // Clear old results
+
+          if (data.length === 0) {
+            resultsDiv.innerHTML = "<p>No schemes found for selected category.</p>";
+            return;
+          }
+
+          data.forEach(scheme => {
+            const div = document.createElement("div");
+            div.className = "scheme-card";
+            div.innerHTML = `
+              <h3>${scheme.scheme}</h3>
+              <p><strong>Type:</strong> ${scheme.type}</p>
+              <p><strong>Eligible For:</strong> ${scheme.eligible_for.join(', ')}</p>
+              <p>${scheme.description}</p>
+              <a href="${scheme.link}" target="_blank">Apply / Learn more</a>
+            `;
+            resultsDiv.appendChild(div);
+          });
+        })
+        .catch(err => {
+          resultsDiv.innerHTML = `<p>❌ Error loading schemes: ${err.message}</p>`;
+        });
+    }
+  </script>
+
+</body>
+</html>

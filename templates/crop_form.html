@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🌾 Karnataka Crop Recommendation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f8f5;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #2e7d32;
+    }
+
+    form {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🌱 Karnataka Crop Recommendation System</h2>
+  <p>Select your district, season, and soil type to get crop recommendations.</p>
+
+  <form method="POST">
+    <label for="location">🏙 District:</label>
+    <select name="location" required>
+      {% for loc in locations %}
+        <option value="{{ loc }}">{{ loc }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="season">⏳ Season:</label>
+    <select name="season" required>
+      {% for s in seasons %}
+        <option value="{{ s }}">{{ s }}</option>
+      {% endfor %}
+    </select>
+
+    <label for="soil_type">🌍 Soil Type:</label>
+    <select name="soil_type" required>
+      {% for st in soil_types %}
+        <option value="{{ st }}">{{ st }}</option>
+      {% endfor %}
+    </select>
+
+    <button type="submit">🌾 Recommend Crop</button>
+  </form>
+
+  {% if error %}
+    <p class="error">❌ {{ error }}</p>
+  {% endif %}
+
+</body>
+</html>

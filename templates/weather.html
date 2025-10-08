@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🌾 KrishiMitra – Weather Forecast</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #eef8f4;
+      --text: #1a1a1a;
+      --accent: #2d8659;
+      --danger: #d32f2f;
+      --drought: #fff3cd;
+      --flood: #f8d7da;
+      --safe: #d4edda;
+      --button: #2d8659;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #f2f2f2;
+      --accent: #66bb6a;
+      --danger: #ff8a80;
+      --drought: #5d4037;
+      --flood: #b71c1c;
+      --safe: #2e7d32;
+      --button: #388e3c;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-align: center;
+      color: var(--accent);
+    }
+
+    label, select, button {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      margin: 10px auto;
+      font-size: 16px;
+    }
+
+    select {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: var(--button);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .forecast-item {
+      margin: 8px auto;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 16px;
+      max-width: 500px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--safe);
+      color: var(--text);
+    }
+
+    .flood {
+      background-color: var(--flood);
+    }
+
+    .drought {
+      background-color: var(--drought);
+    }
+
+    .recommendation {
+      margin: 20px auto;
+      padding: 14px;
+      font-weight: bold;
+      font-size: 18px;
+      max-width: 500px;
+      background-color: var(--accent);
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="theme-toggle" onclick="toggleDarkMode()">🌗 Theme</button>
+
+  <h1>🌾 KrishiMitra – Weather Forecast</h1>
+
+  <label for="city">Select your Karnataka city:</label>
+  <select id="city">
+    <option value="Mysore,12.2958,76.6394">Mysore</option>
+    <option value="Bangalore,12.9716,77.5946">Bangalore</option>
+    <option value="Davangere,14.4647,75.9214">Davangere</option>
+    <option value="Mangalore,12.9141,74.8560">Mangalore</option>
+    <option value="Hubli,15.3647,75.1240">Hubli</option>
+    <option value="Belgaum,15.8497,74.4977">Belgaum</option>
+    <option value="Bellary,15.1394,76.9214">Bellary</option>
+  </select>
+
+  <button onclick="getForecast()">🔍 Get Forecast</button>
+
+  <div id="output"></div>
+
+  <script>
+    const API_KEY = "b810a723f42eb876b228c86bc1884a58";
+
+    // Load theme from localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    async function getForecast() {
+      const output = document.getElementById("output");
+      output.innerHTML = "⏳ Loading forecast...";
+
+      const [cityName, lat, lon] = document.getElementById("city").value.split(",");
+      const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const dailyRain = {};
+        for (let entry of data.list) {
+          const date = entry.dt_txt.split(" ")[0];
+          const rain = entry.rain ? entry.rain["3h"] || 0 : 0;
+          dailyRain[date] = (dailyRain[date] || 0) + rain;
+        }
+
+        let html = `<h3 style="text-align:center;">📅 Forecast for ${cityName}</h3>`;
+        let totalRain = 0;
+        let count = 0;
+
+        for (let date in dailyRain) {
+          const rain = dailyRain[date].toFixed(2);
+          totalRain += parseFloat(rain);
+          count++;
+          let className = "forecast-item";
+          let condition = "✅ Safe";
+          if (rain >= 40) {
+            className += " flood";
+            condition = "⚠️ Flood Risk";
+          } else if (rain <= 2) {
+            className += " drought";
+            condition = "⚠️ Drought Warning";
+          }
+          html += `<div class="${className}"><span>${date}</span><span>🌧️ ${rain} mm → ${condition}</span></div>`;
+        }
+
+        const avg = totalRain / count;
+        let recommendation = "";
+        if (avg >= 20) {
+          recommendation = "🌱 Good time to sow crops!";
+        } else if (avg <= 5) {
+          recommendation = "🚫 Avoid sowing – dry conditions expected.";
+        } else {
+          recommendation = "⌛ Wait a few more days before sowing.";
+        }
+
+        html += `<div class="recommendation">${recommendation}</div>`;
+        output.innerHTML = html;
+
+      } catch (err) {
+        output.innerHTML = `<div class="recommendation" style="background: var(--danger);">❌ Error fetching forecast data</div>`;
+      }
+    }
+  </script>
+</body>
+</html>
