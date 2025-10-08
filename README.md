@@ -3,13 +3,17 @@
 
 KrishiMitra is an AI-powered crop recommendation and disease prediction system designed to help farmers make informed decisions about crop selection, planting, and disease management. The project provides personalized suggestions based on location, soil type, season, and weather conditions.
 
-## Features
+## Features:
 
-- **Crop Recommendation:** Suggests the best crops for a given district, soil type, and season.
-- **Disease Prediction:** Detects potential crop diseases using machine learning models.
-- **Weather-Aware Suggestions:** Provides weekly rainfall forecasts, drought/flood alerts, and seed sowing/harvesting recommendations.
-- **Interactive Interface:** User-friendly interface for farmers to input data and get instant recommendations.
-- **Data Analysis & Visualization:** Generates graphs and reports for better decision-making.
+- **Crop Prediction:** Suggests optimal crops based on soil type, season, and location.
+- **Fertilizer Recommendation:** Guides proper fertilizer use for better yield.
+- **Weather-Based Recommendations:** Provides weekly forecasts, drought/flood alerts, and sowing/harvesting guidance.
+- **Government Schemes:** Informs farmers about relevant government programs and subsidies.
+- **Disease Detection:** Identifies crop diseases through image-based AI analysis.
+- **Interactive Dashboard:** User-friendly interface for easy access to all recommendations.
+
+KrishiMitra empowers farmers with actionable insights to increase productivity and reduce losses.
+
 
 ## Technologies Used
 
