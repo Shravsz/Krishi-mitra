@@ -49,3 +49,6 @@ krishi_mitra/
 ├── users.json
 ├── schemes_data.json
 └── README.md
+
+👩‍💻 Author
+R Shravya
